@@ -1,0 +1,59 @@
+version: "2.0"
+
+services:
+
+  node1:
+    restart: on-failure:5
+    build: nodeImage
+    image: nodequorum
+    ports:
+      - "9000:9000"
+      - "21000:21000"
+      - "22000:22000"
+      - "50400:50400"
+      - "21000:21000/udp"
+    volumes:
+     - ./confNode1:/configNode #configuration setting
+    command: ./configNode/start.sh
+
+  node2:
+    restart: on-failure:5
+    build: nodeImage
+    image: nodequorum
+    ports:
+      - "9001:9000"
+      - "21001:21000"
+      - "22001:22000"
+      - "50401:50400"
+      - "21001:21000/udp"
+    volumes:
+     - ./confNode2:/configNode #configuration setting
+    command: ./configNode/start.sh
+
+  node3:
+    restart: on-failure:5
+    build: nodeImage
+    image: nodequorum
+    ports:
+      - "9002:9000"
+      - "21002:21000"
+      - "22002:22000"
+      - "50402:50400"
+      - "21002:21000/udp"
+    volumes:
+     - ./confNode3:/configNode #configuration setting
+    command: ./configNode/start.sh
+
+  node4:
+    restart: on-failure:5
+    build: nodeImage
+    image: nodequorum
+    ports:
+      - "9003:9000"
+      - "21003:21000"
+      - "22003:22000"
+      - "50403:50400"
+      - "21003:21000/udp"
+    volumes:
+     - ./confNode4:/configNode #configuration setting
+    command: ./configNode/start.sh
